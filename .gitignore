@@ -1,0 +1,23 @@
+# Shopify CLI
+.shopify/
+*.themeidx
+
+# Dependencies
+node_modules/
+
+# macOS
+.DS_Store
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
