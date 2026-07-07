@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Semantic Roles" subtitle="Surfaces, text, borders, status" -->
+<!DOCTYPE html>
+<html><head><link rel="stylesheet" href="../styles.css"></head>
+<body style="margin:0;background:var(--z3-paper);font-family:var(--font-body);">
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:16px;font-size:13px;">
+  <div style="background:var(--surface-card);border:2px solid var(--border-strong);border-radius:10px;padding:12px;">
+    <div style="color:var(--text-body);font-weight:600;">text-body</div>
+    <div style="color:var(--text-muted);">text-muted</div>
+    <div style="color:var(--text-faint);">text-faint</div>
+  </div>
+  <div style="background:var(--surface-ink);border-radius:10px;padding:12px;">
+    <div style="color:var(--text-on-ink);font-weight:600;">text-on-ink</div>
+    <div style="color:var(--text-on-ink);opacity:.6;">on surface-ink</div>
+    <div style="margin-top:6px;"><span style="background:var(--surface-brand);color:var(--text-on-brand);border-radius:999px;padding:2px 10px;font-weight:600;">surface-brand</span></div>
+  </div>
+  <div style="background:var(--surface-wash);border:1px solid var(--border-subtle);border-radius:10px;padding:12px;">
+    <div style="font-weight:600;margin-bottom:6px;">surface-wash</div>
+    <div style="display:flex;gap:6px;">
+      <span title="success" style="width:22px;height:22px;border-radius:6px;background:var(--status-success);border:2px solid var(--z3-ink);"></span>
+      <span title="info" style="width:22px;height:22px;border-radius:6px;background:var(--status-info);border:2px solid var(--z3-ink);"></span>
+      <span title="warning" style="width:22px;height:22px;border-radius:6px;background:var(--status-warning);border:2px solid var(--z3-ink);"></span>
+      <span title="danger" style="width:22px;height:22px;border-radius:6px;background:var(--status-danger);border:2px solid var(--z3-ink);"></span>
+    </div>
+  </div>
+</div>
+</body></html>

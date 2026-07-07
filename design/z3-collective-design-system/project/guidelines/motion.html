@@ -1,0 +1,14 @@
+<!-- @dsCard group="Spacing" viewport="700x150" name="Motion — Hover & Press" subtitle="Lift on hover, click down on press (try it)" -->
+<!DOCTYPE html>
+<html><head><link rel="stylesheet" href="../styles.css">
+<style>
+.demo{font-family:var(--font-display);font-weight:700;font-size:16px;background:var(--z3-teal);border:2px solid var(--z3-ink);border-radius:999px;padding:14px 28px;box-shadow:var(--shadow-sticker);cursor:pointer;transition:transform var(--duration-fast) var(--ease-snap),box-shadow var(--duration-fast) var(--ease-snap),background var(--duration-fast) linear;}
+.demo:hover{transform:translate(-1px,-1px);box-shadow:var(--shadow-sticker-lg);background:var(--z3-teal-deep);}
+.demo:active{transform:translate(2px,2px);box-shadow:none;}
+</style></head>
+<body style="margin:0;background:var(--z3-paper);padding:24px;">
+<div style="display:flex;gap:24px;align-items:center;">
+  <button class="demo">Click me</button>
+  <div style="font-family:var(--font-body);font-size:13px;color:var(--text-muted);max-width:380px;">Hover: lift −1px, shadow grows, teal deepens. Press: sink +2px, shadow collapses. 120ms, snap easing.</div>
+</div>
+</body></html>

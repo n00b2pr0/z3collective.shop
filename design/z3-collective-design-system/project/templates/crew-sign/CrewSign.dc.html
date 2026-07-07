@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Crew Sign" description="Portrait 11x17 popup/booth sign — teal brand moment, big headline, scannable QR sticker, one clear action" -->
+<helmet>
+<script src="./ds-base.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<style>
+  html,body{margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  .cs-stage{min-height:100vh;background:#8a8a90;display:flex;align-items:center;justify-content:center;padding:44px;box-sizing:border-box;}
+  #z3-qr canvas, #z3-qr img{display:block;width:100% !important;height:100% !important;border-radius:8px;}
+  @page{size:11in 17in;margin:0;}
+  @media print{
+    .cs-stage{background:#fff;padding:0;min-height:auto;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</helmet>
+
+<div class="cs-stage">
+  <div style="position:relative;width:11in;height:17in;background:var(--z3-teal);border:2px solid var(--z3-ink);border-radius:32px;box-shadow:10px 10px 0 var(--z3-ink);box-sizing:border-box;display:flex;flex-direction:column;padding:0.85in 0.8in 0.7in;color:var(--z3-ink);font-family:var(--font-body);overflow:hidden;">
+
+    <!-- top: eyebrow -->
+    <div style="display:flex;justify-content:center;">
+      <span style="display:inline-flex;align-items:center;background:var(--z3-ink);color:var(--z3-paper);border-radius:999px;padding:9px 26px 11px;white-space:nowrap;font-family:var(--font-body);font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:0.12em;">Custom 3D-printed clickys</span>
+    </div>
+
+    <!-- headline -->
+    <div style="margin-top:0.5in;text-align:center;">
+      <h1 style="margin:0;font-family:var(--font-display);font-weight:700;font-size:94px;letter-spacing:-0.03em;line-height:1.02;text-wrap:balance;">Get your whole crew clicking.</h1>
+      <p style="margin:34px auto 0;max-width:8in;font-family:var(--font-body);font-weight:500;font-size:25px;line-height:1.4;color:var(--z3-ink);text-wrap:pretty;">Order custom 3D-printed clickys for your team, family, or youth group. Or book a popup for parties and events.</p>
+    </div>
+
+    <!-- QR sticker card -->
+    <div style="margin:auto 0;display:flex;justify-content:center;">
+      <div style="position:relative;background:var(--z3-white);border:2px solid var(--z3-ink);border-radius:24px;box-shadow:7px 7px 0 var(--z3-ink);padding:0.5in 0.6in 0.55in;display:flex;flex-direction:column;align-items:center;gap:22px;">
+        <div style="font-family:var(--font-display);font-weight:700;font-size:52px;letter-spacing:-0.02em;line-height:1;color:var(--z3-ink);text-align:center;">Scan to get started</div>
+        <div id="z3-qr" style="width:2.7in;height:2.7in;background:var(--z3-white);"></div>
+        <!-- point your camera here -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <svg width="30" height="34" viewBox="0 0 30 34" fill="none" stroke="var(--z3-ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 32 C15 22, 15 14, 15 2"/><polyline points="7,9 15,1 23,9"/></svg>
+          <span style="font-family:var(--font-body);font-weight:600;font-size:16px;line-height:1.2;color:var(--z3-ink-70);">Point your camera here</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div style="margin-top:0.55in;display:flex;flex-direction:column;align-items:center;gap:14px;">
+      <div style="display:inline-block;white-space:nowrap;background:var(--z3-ink);color:var(--z3-paper);border-radius:12px;padding:8px 16px 9px;font-family:var(--font-display);font-weight:700;font-size:24px;line-height:1;"><span style="letter-spacing:0.05em;">Z3</span> <span style="letter-spacing:-0.01em;">collective.</span></div>
+      <span style="font-family:var(--font-body);font-weight:500;font-size:20px;color:var(--z3-ink);">Made to move by teens.</span>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 528, &quot;height&quot;: 816 },
+  &quot;url&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;https://z3collective.com/start&quot;, &quot;tsType&quot;: &quot;string&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount() { this._draw(); }
+  componentDidUpdate(prev) { if (prev.url !== this.props.url) this._draw(); }
+  _draw() {
+    const url = this.props.url || 'https://z3collective.com/start';
+    const tick = () => {
+      const el = document.getElementById('z3-qr');
+      if (!el) return;
+      if (!window.QRCode) { setTimeout(tick, 120); return; }
+      el.innerHTML = '';
+      new window.QRCode(el, {
+        text: url, width: 520, height: 520,
+        colorDark: '#0C0C11', colorLight: '#FFFFFF',
+        correctLevel: window.QRCode.CorrectLevel.M
+      });
+    };
+    tick();
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

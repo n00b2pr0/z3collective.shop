@@ -3,53 +3,58 @@
     "z3_landing": {
       "type": "z3-landing",
       "blocks": {
-        "story1": {
-          "type": "story",
-          "settings": {
-            "title": "Made by teens",
-            "text": "Every item is designed, printed, and packed by our young makers."
-          }
+        "line_dragons": {
+          "type": "line",
+          "settings": { "name": "Dragons", "flair": "Spark & Scale", "accent": "dragons" }
         },
-        "story2": {
-          "type": "story",
-          "settings": {
-            "title": "One of a kind",
-            "text": "Small batches, custom colors, and designs you won't find anywhere else."
-          }
+        "line_dinos": {
+          "type": "line",
+          "settings": { "name": "Dinos", "flair": "Stomp & Roar", "accent": "dinos" }
         },
-        "story3": {
-          "type": "story",
-          "settings": {
-            "title": "Learning as we go",
-            "text": "Z3 Collective is a real business run by teens learning how to make, sell, and ship."
-          }
+        "line_critters": {
+          "type": "line",
+          "settings": { "name": "Critters", "flair": "Wild & Whimsy", "accent": "critters" }
+        },
+        "line_fidgets": {
+          "type": "line",
+          "settings": { "name": "Fidgets", "flair": "Twist & Click", "accent": "fidgets" }
         },
         "product1": {
           "type": "product",
           "settings": {
-            "title": "Coming soon",
-            "tag": "In the works"
+            "title": "Flexi Dragon",
+            "price": "$12",
+            "blurb": "Bends, twists, that's the point.",
+            "tag": "Dragons",
+            "line": "dragons"
           }
         },
         "product2": {
           "type": "product",
           "settings": {
-            "title": "Coming soon",
-            "tag": "In the works"
+            "title": "Flexi Rex",
+            "price": "$12",
+            "blurb": "Stomps on desks everywhere.",
+            "tag": "Dinos",
+            "line": "dinos"
           }
         },
         "product3": {
           "type": "product",
           "settings": {
-            "title": "Coming soon",
-            "tag": "In the works"
+            "title": "Pocket Fox",
+            "price": "$10",
+            "blurb": "Fits in a pocket. Prefers yours.",
+            "tag": "Critters",
+            "line": "critters"
           }
         }
       },
       "block_order": [
-        "story1",
-        "story2",
-        "story3",
+        "line_dragons",
+        "line_dinos",
+        "line_critters",
+        "line_fidgets",
         "product1",
         "product2",
         "product3"

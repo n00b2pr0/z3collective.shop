@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Line Sign" description="5x7 hang-tag booth sign for one product line — line-colored, sticker look, flair headline" -->
+<helmet>
+<script src="./ds-base.js"></script>
+<style>
+  html,body{margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  .ls-stage{min-height:100vh;background:#8a8a90;display:flex;align-items:center;justify-content:center;padding:44px;box-sizing:border-box;}
+  .ls-tag{background:#FF7038;}
+  .ls-tag[data-line="Dragons"]{background:#FF7038;}
+  .ls-tag[data-line="Dinos"]{background:#46E66B;}
+  .ls-tag[data-line="Critters"]{background:#3B9DFF;}
+  .ls-tag[data-line="Fidgets"]{background:#FFDB00;}
+  @page{size:7in 5in;margin:0;}
+  @media print{
+    .ls-stage{background:#fff;padding:0;min-height:auto;}
+    .ls-tag{box-shadow:none !important;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</helmet>
+
+<div class="ls-stage">
+  <div class="ls-tag" data-line="{{ name }}" style="position:relative;width:7in;height:5in;border:2px solid var(--z3-ink);border-radius:40px;box-shadow:7px 7px 0 var(--z3-ink);box-sizing:border-box;display:flex;flex-direction:column;padding:0.5in 0.55in;color:var(--z3-ink);font-family:var(--font-body);overflow:hidden;">
+
+    <!-- eyebrow: line name -->
+    <div>
+      <span style="display:inline-flex;align-items:center;background:var(--z3-ink);color:var(--z3-paper);border-radius:999px;padding:8px 22px 10px;font-family:var(--font-body);font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:0.1em;">{{ name }}</span>
+    </div>
+
+    <!-- hero: the flair, oversized -->
+    <div style="margin:auto 0;">
+      <h1 style="margin:0;font-family:var(--font-display);font-weight:700;font-size:98px;letter-spacing:-0.03em;line-height:0.86;text-wrap:balance;max-width:5in;">{{ flair }}</h1>
+      <p style="margin:18px 0 0;max-width:4.4in;font-family:var(--font-body);font-size:20px;font-weight:600;line-height:1.4;color:var(--z3-ink);text-wrap:pretty;">{{ blurb }}</p>
+    </div>
+
+    <!-- footer: Z3 box logo -->
+    <div style="text-align:right;">
+      <div style="display:inline-block;white-space:nowrap;background:var(--z3-ink);color:var(--z3-paper);border-radius:11px;padding:6px 13px 7px;font-family:var(--font-display);font-weight:700;font-size:18px;line-height:1;"><span style="letter-spacing:0.05em;">Z3</span> <span style="letter-spacing:-0.01em;">collective.</span></div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:672,&quot;height&quot;:480},&quot;line&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Dragons&quot;,&quot;options&quot;:[&quot;Dragons&quot;,&quot;Dinos&quot;,&quot;Critters&quot;,&quot;Fidgets&quot;],&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const lines = {
+      Dragons:  { accent: '#FF7038', flair: 'Spark & Scale', blurb: "Dragons that bend head to tail. Hatch your collection." },
+      Dinos:    { accent: '#46E66B', flair: 'Stomp & Roar',  blurb: "Bend it, stomp it, hear it roar." },
+      Critters: { accent: '#3B9DFF', flair: 'Wild & Whimsy', blurb: "Small critters. Big adventures. Wild and imaginative worlds." },
+      Fidgets:  { accent: '#FFDB00', flair: 'Twist & Click', blurb: "Busy hands, calm brain. Click, twist, repeat." },
+    };
+    const name = this.props.line || 'Dragons';
+    const d = lines[name] || lines.Dragons;
+    return { name, accent: d.accent, flair: d.flair, blurb: d.blurb };
+  }
+}
+</script>
+</body>
+</html>

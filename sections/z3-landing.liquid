@@ -1,80 +1,124 @@
 {%- comment -%}
   Z3 Collective — Launch Landing Section
-  Drop this file into a Dawn theme's /sections folder.
-  Everything below (colors, text, products, email signup) is editable
-  in the Shopify theme editor — no code changes needed.
+  Rebranded to the Z3 Collective Design System (claude.ai/design):
+  ink + paper + teal, Space Grotesk / Inter, 2px ink outlines,
+  hard "sticker" shadows, pill buttons, snappy motion.
+  Design tokens come from assets/z3-tokens.css (loaded theme-wide).
+  Everything below is editable in the Shopify theme editor.
 {%- endcomment -%}
 
 {%- style -%}
   #z3-{{ section.id }} {
-    --z3-accent: {{ section.settings.accent_color }};
-    --z3-bg: {{ section.settings.bg_color }};
-    --z3-text: {{ section.settings.text_color }};
-    background: var(--z3-bg);
-    color: var(--z3-text);
+    background: var(--surface-page);
+    color: var(--text-body);
+    font-family: var(--font-body);
   }
-  #z3-{{ section.id }} .z3-wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 48px 20px 64px;
+  #z3-{{ section.id }} .z3-wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--space-6); }
+
+  /* Buttons — pill, ink outline, sticker shadow, snappy */
+  #z3-{{ section.id }} .z3-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+    font-family: var(--font-display); font-weight: var(--weight-display-bold); letter-spacing: -0.01em;
+    font-size: 18px; padding: 14px 28px; min-height: 52px;
+    border-radius: var(--radius-pill); border: var(--border-width) solid var(--z3-ink);
+    background: var(--z3-teal); color: var(--z3-ink); text-decoration: none; cursor: pointer;
+    box-shadow: var(--shadow-sticker);
+    transition: transform var(--duration-fast) var(--ease-snap), box-shadow var(--duration-fast) var(--ease-snap), background var(--duration-fast) linear;
   }
-  #z3-{{ section.id }} .z3-hero {
-    text-align: center;
-    padding: 40px 0 24px;
+  #z3-{{ section.id }} .z3-btn:hover { transform: translate(-1px,-1px); box-shadow: var(--shadow-sticker-lg); background: var(--z3-teal-deep); }
+  #z3-{{ section.id }} .z3-btn:active { transform: translate(2px,2px); box-shadow: none; }
+  #z3-{{ section.id }} .z3-btn--secondary { background: var(--z3-white); }
+  #z3-{{ section.id }} .z3-btn--secondary:hover { background: var(--z3-white); }
+
+  /* Hero */
+  #z3-{{ section.id }} .z3-hero { padding: var(--space-9) 0 var(--space-7); }
+  #z3-{{ section.id }} .z3-logo { max-width: 160px; height: auto; margin: 0 0 var(--space-5); display: block; }
+  #z3-{{ section.id }} .z3-eyebrow {
+    font-size: var(--text-tiny); font-weight: var(--weight-body-semibold);
+    letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted);
   }
-  #z3-{{ section.id }} .z3-logo { max-width: 160px; height: auto; margin: 0 auto 24px; }
   #z3-{{ section.id }} .z3-hero h1 {
-    font-size: clamp(2rem, 5vw, 3.4rem);
-    line-height: 1.05;
-    margin: 0 0 16px;
+    font-family: var(--font-display); font-weight: var(--weight-display-bold);
+    font-size: clamp(2.4rem, 6vw, var(--text-hero)); line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display); margin: var(--space-3) 0 0; max-width: 640px;
   }
-  #z3-{{ section.id }} .z3-hero p { font-size: 1.15rem; max-width: 620px; margin: 0 auto; opacity: .9; }
-  #z3-{{ section.id }} .z3-story {
-    display: grid;
-    gap: 28px;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    margin: 56px 0;
+  #z3-{{ section.id }} .z3-hero h1 .z3-accent { color: var(--z3-teal); }
+  #z3-{{ section.id }} .z3-hero p {
+    font-size: 17px; line-height: var(--leading-body); color: var(--text-muted);
+    max-width: 480px; margin: var(--space-4) 0 var(--space-6);
   }
-  #z3-{{ section.id }} .z3-story-card h3 { margin: 0 0 8px; font-size: 1.25rem; color: var(--z3-accent); }
-  #z3-{{ section.id }} .z3-story-card p { margin: 0; opacity: .9; }
-  #z3-{{ section.id }} .z3-preview-title { text-align: center; font-size: 1.8rem; margin: 48px 0 8px; }
-  #z3-{{ section.id }} .z3-preview-sub { text-align: center; opacity: .75; margin: 0 0 32px; }
-  #z3-{{ section.id }} .z3-grid {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  #z3-{{ section.id }} .z3-hero-cta { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+  /* Section headings */
+  #z3-{{ section.id }} .z3-section { padding: var(--space-7) 0 0; }
+  #z3-{{ section.id }} .z3-section h2 {
+    font-family: var(--font-display); font-weight: var(--weight-display-bold);
+    font-size: var(--text-h2); letter-spacing: var(--tracking-display); margin: 0 0 var(--space-4);
   }
-  #z3-{{ section.id }} .z3-product { text-align: center; }
-  #z3-{{ section.id }} .z3-product img { width: 100%; height: auto; border-radius: 12px; aspect-ratio: 1/1; object-fit: cover; }
-  #z3-{{ section.id }} .z3-product .z3-ph {
-    width: 100%; aspect-ratio: 1/1; border-radius: 12px;
-    background: color-mix(in srgb, var(--z3-accent) 15%, transparent);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem;
+  #z3-{{ section.id }} .z3-sub { color: var(--text-muted); margin: calc(-1 * var(--space-2)) 0 var(--space-5); }
+
+  /* Product-line grid */
+  #z3-{{ section.id }} .z3-lines { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+  #z3-{{ section.id }} .z3-line-card {
+    background: var(--z3-white); border: var(--border-width) solid var(--z3-ink);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-sticker); overflow: hidden;
+    transition: transform var(--duration-fast) var(--ease-snap), box-shadow var(--duration-fast) var(--ease-snap);
   }
-  #z3-{{ section.id }} .z3-product h4 { margin: 14px 0 4px; font-size: 1.1rem; }
-  #z3-{{ section.id }} .z3-product .z3-tag { font-size: .85rem; color: var(--z3-accent); font-weight: 600; }
+  #z3-{{ section.id }} .z3-line-card:hover { transform: translate(-1px,-1px); box-shadow: var(--shadow-sticker-lg); }
+  #z3-{{ section.id }} .z3-line-cap { height: 76px; }
+  #z3-{{ section.id }} .z3-line-body { padding: var(--space-4); }
+  #z3-{{ section.id }} .z3-line-body .z3-line-name { font-family: var(--font-display); font-weight: var(--weight-display-bold); font-size: 18px; }
+  #z3-{{ section.id }} .z3-line-body .z3-line-flair { font-size: var(--text-small); color: var(--text-muted); margin-top: 2px; }
+
+  /* Product tiles */
+  #z3-{{ section.id }} .z3-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+  #z3-{{ section.id }} .z3-product {
+    background: var(--surface-card); border: var(--border-width) solid var(--z3-ink);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-sticker); overflow: hidden;
+  }
+  #z3-{{ section.id }} .z3-product .z3-photo { aspect-ratio: 4 / 3; border-bottom: var(--border-width) solid var(--z3-ink); display: grid; place-items: center; }
+  #z3-{{ section.id }} .z3-product .z3-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #z3-{{ section.id }} .z3-product .z3-photo-label {
+    font-size: var(--text-tiny); font-weight: var(--weight-body-semibold); letter-spacing: var(--tracking-caps);
+    text-transform: uppercase; color: var(--text-faint);
+  }
+  #z3-{{ section.id }} .z3-product-body { padding: var(--space-4); }
+  #z3-{{ section.id }} .z3-product-top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-2); }
+  #z3-{{ section.id }} .z3-product-name { font-family: var(--font-display); font-weight: var(--weight-display-bold); font-size: 18px; }
+  #z3-{{ section.id }} .z3-product-price { font-family: var(--font-display); font-weight: var(--weight-display-medium); font-size: 18px; }
+  #z3-{{ section.id }} .z3-product-blurb { font-size: var(--text-small); color: var(--text-muted); margin-top: var(--space-1); }
+  #z3-{{ section.id }} .z3-badge {
+    display: inline-flex; align-items: center; margin-top: var(--space-3);
+    font-family: var(--font-display); font-weight: var(--weight-display-bold); font-size: var(--text-tiny);
+    letter-spacing: 0.04em; text-transform: uppercase; color: var(--z3-ink);
+    border: var(--border-width) solid var(--z3-ink); border-radius: var(--radius-pill); padding: 4px 12px;
+    background: var(--z3-teal);
+  }
+
+  /* Email signup */
   #z3-{{ section.id }} .z3-signup {
-    margin: 64px auto 0;
-    max-width: 540px;
-    text-align: center;
-    padding: 40px 24px;
-    border-radius: 16px;
-    background: color-mix(in srgb, var(--z3-accent) 10%, transparent);
+    margin: var(--space-8) auto 0; max-width: 560px; text-align: center;
+    padding: var(--space-7) var(--space-6); border-radius: var(--radius-lg);
+    background: var(--surface-wash); border: var(--border-width) solid var(--z3-ink); box-shadow: var(--shadow-sticker-lg);
   }
-  #z3-{{ section.id }} .z3-signup h3 { margin: 0 0 8px; font-size: 1.5rem; }
-  #z3-{{ section.id }} .z3-signup p { margin: 0 0 20px; opacity: .85; }
-  #z3-{{ section.id }} .z3-form { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  #z3-{{ section.id }} .z3-signup h3 { font-family: var(--font-display); font-weight: var(--weight-display-bold); font-size: var(--text-h3); margin: 0 0 var(--space-2); }
+  #z3-{{ section.id }} .z3-signup p { color: var(--text-muted); margin: 0 0 var(--space-5); }
+  #z3-{{ section.id }} .z3-form { display: flex; gap: var(--space-2); flex-wrap: wrap; justify-content: center; }
   #z3-{{ section.id }} .z3-form input[type="email"] {
-    flex: 1 1 220px; padding: 12px 14px; border-radius: 8px;
-    border: 1px solid color-mix(in srgb, var(--z3-text) 25%, transparent);
-    font-size: 1rem;
+    flex: 1 1 240px; padding: 12px 16px; font-size: var(--text-base); font-family: var(--font-body);
+    border-radius: var(--radius-md); border: var(--border-width) solid var(--z3-ink); background: var(--z3-white); color: var(--z3-ink);
   }
-  #z3-{{ section.id }} .z3-form button {
-    padding: 12px 22px; border: none; border-radius: 8px; cursor: pointer;
-    background: var(--z3-accent); color: #fff; font-size: 1rem; font-weight: 600;
+  #z3-{{ section.id }} .z3-form .z3-btn { min-height: 48px; padding: 12px 24px; font-size: var(--text-base); }
+  #z3-{{ section.id }} .z3-success { flex-basis: 100%; margin-top: var(--space-3); font-family: var(--font-display); font-weight: var(--weight-display-medium); color: var(--z3-teal-deep); }
+
+  @media (max-width: 900px) {
+    #z3-{{ section.id }} .z3-lines { grid-template-columns: repeat(2, 1fr); }
+    #z3-{{ section.id }} .z3-grid { grid-template-columns: repeat(2, 1fr); }
   }
-  #z3-{{ section.id }} .z3-success { margin-top: 12px; color: var(--z3-accent); font-weight: 600; }
+  @media (max-width: 560px) {
+    #z3-{{ section.id }} .z3-lines,
+    #z3-{{ section.id }} .z3-grid { grid-template-columns: 1fr; }
+  }
 {%- endstyle -%}
 
 <div id="z3-{{ section.id }}">
@@ -84,46 +128,63 @@
       {%- if section.settings.logo != blank -%}
         <img class="z3-logo" src="{{ section.settings.logo | image_url: width: 320 }}" alt="{{ shop.name }}" width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" loading="lazy">
       {%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="z3-eyebrow">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
       {%- if section.settings.heading != blank -%}
-        <h1>{{ section.settings.heading }}</h1>
+        <h1>{{ section.settings.heading }}{% if section.settings.heading_accent != blank %} <span class="z3-accent">{{ section.settings.heading_accent }}</span>{% endif %}</h1>
       {%- endif -%}
       {%- if section.settings.subheading != blank -%}
         <p>{{ section.settings.subheading }}</p>
       {%- endif -%}
     </div>
 
-    {%- assign story_blocks = section.blocks | where: 'type', 'story' -%}
-    {%- if story_blocks.size > 0 -%}
-      <div class="z3-story">
-        {%- for block in story_blocks -%}
-          <div class="z3-story-card" {{ block.shopify_attributes }}>
-            {%- if block.settings.title != blank -%}<h3>{{ block.settings.title }}</h3>{%- endif -%}
-            {%- if block.settings.text != blank -%}<p>{{ block.settings.text }}</p>{%- endif -%}
-          </div>
-        {%- endfor -%}
+    {%- assign line_blocks = section.blocks | where: 'type', 'line' -%}
+    {%- if line_blocks.size > 0 -%}
+      <div class="z3-section">
+        {%- if section.settings.lines_title != blank -%}<h2>{{ section.settings.lines_title }}</h2>{%- endif -%}
+        <div class="z3-lines">
+          {%- for block in line_blocks -%}
+            {%- assign accent_var = block.settings.accent | prepend: '--z3-' -%}
+            <div class="z3-line-card" {{ block.shopify_attributes }}>
+              <div class="z3-line-cap" style="background: var({{ accent_var }});"></div>
+              <div class="z3-line-body">
+                {%- if block.settings.name != blank -%}<div class="z3-line-name">{{ block.settings.name }}</div>{%- endif -%}
+                {%- if block.settings.flair != blank -%}<div class="z3-line-flair">{{ block.settings.flair }}</div>{%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
       </div>
     {%- endif -%}
 
     {%- assign product_blocks = section.blocks | where: 'type', 'product' -%}
     {%- if product_blocks.size > 0 -%}
-      {%- if section.settings.preview_title != blank -%}
-        <h2 class="z3-preview-title">{{ section.settings.preview_title }}</h2>
-      {%- endif -%}
-      {%- if section.settings.preview_subtitle != blank -%}
-        <p class="z3-preview-sub">{{ section.settings.preview_subtitle }}</p>
-      {%- endif -%}
-      <div class="z3-grid">
-        {%- for block in product_blocks -%}
-          <div class="z3-product" {{ block.shopify_attributes }}>
-            {%- if block.settings.image != blank -%}
-              <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.title }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" loading="lazy">
-            {%- else -%}
-              <div class="z3-ph">🧩</div>
-            {%- endif -%}
-            {%- if block.settings.title != blank -%}<h4>{{ block.settings.title }}</h4>{%- endif -%}
-            {%- if block.settings.tag != blank -%}<div class="z3-tag">{{ block.settings.tag }}</div>{%- endif -%}
-          </div>
-        {%- endfor -%}
+      <div class="z3-section">
+        {%- if section.settings.preview_title != blank -%}<h2>{{ section.settings.preview_title }}</h2>{%- endif -%}
+        {%- if section.settings.preview_subtitle != blank -%}<p class="z3-sub">{{ section.settings.preview_subtitle }}</p>{%- endif -%}
+        <div class="z3-grid">
+          {%- for block in product_blocks -%}
+            {%- assign accent_var = block.settings.line | prepend: '--z3-' -%}
+            <div class="z3-product" {{ block.shopify_attributes }}>
+              <div class="z3-photo" style="background: var({{ accent_var }});">
+                {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" loading="lazy">
+                {%- else -%}
+                  <span class="z3-photo-label">product photo</span>
+                {%- endif -%}
+              </div>
+              <div class="z3-product-body">
+                <div class="z3-product-top">
+                  {%- if block.settings.title != blank -%}<span class="z3-product-name">{{ block.settings.title }}</span>{%- endif -%}
+                  {%- if block.settings.price != blank -%}<span class="z3-product-price">{{ block.settings.price }}</span>{%- endif -%}
+                </div>
+                {%- if block.settings.blurb != blank -%}<div class="z3-product-blurb">{{ block.settings.blurb }}</div>{%- endif -%}
+                {%- if block.settings.tag != blank -%}<span class="z3-badge" style="background: var({{ accent_var }});">{{ block.settings.tag }}</span>{%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
       </div>
     {%- endif -%}
 
@@ -131,16 +192,10 @@
       <div class="z3-signup">
         {%- if section.settings.signup_title != blank -%}<h3>{{ section.settings.signup_title }}</h3>{%- endif -%}
         {%- if section.settings.signup_text != blank -%}<p>{{ section.settings.signup_text }}</p>{%- endif -%}
-
         {%- form 'customer', class: 'z3-form' -%}
           <input type="hidden" name="contact[tags]" value="newsletter, z3-launch">
-          <input
-            type="email"
-            name="contact[email]"
-            placeholder="{{ section.settings.signup_placeholder }}"
-            required
-            aria-label="Email">
-          <button type="submit">{{ section.settings.signup_button }}</button>
+          <input type="email" name="contact[email]" placeholder="{{ section.settings.signup_placeholder }}" required aria-label="Email">
+          <button type="submit" class="z3-btn">{{ section.settings.signup_button }}</button>
           {%- if form.posted_successfully? -%}
             <p class="z3-success">{{ section.settings.signup_success }}</p>
           {%- endif -%}
@@ -158,33 +213,45 @@
   "settings": [
     { "type": "header", "content": "Brand" },
     { "type": "image_picker", "id": "logo", "label": "Logo" },
-    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#00A6A6" },
-    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#0E1116" },
-    { "type": "color", "id": "text_color", "label": "Text color", "default": "#F4F4F5" },
 
     { "type": "header", "content": "Hero" },
-    { "type": "text", "id": "heading", "label": "Headline", "default": "Z3 Collective" },
-    { "type": "textarea", "id": "subheading", "label": "Subheadline", "default": "Custom 3D-printed creations, designed and made by kids. Full shop launching soon." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "A teen-preneur business" },
+    { "type": "text", "id": "heading", "label": "Headline", "default": "Toys that move, click, and" },
+    { "type": "text", "id": "heading_accent", "label": "Headline accent word (teal)", "default": "surprise." },
+    { "type": "textarea", "id": "subheading", "label": "Subheadline", "default": "Bend it, twist it — that's the point. We design and 3D-print every one ourselves. Full shop launching soon." },
+
+    { "type": "header", "content": "Product lines" },
+    { "type": "text", "id": "lines_title", "label": "Section title", "default": "Four lines. One rule: it has to move." },
 
     { "type": "header", "content": "Product preview" },
-    { "type": "text", "id": "preview_title", "label": "Preview title", "default": "A peek at what's coming" },
+    { "type": "text", "id": "preview_title", "label": "Preview title", "default": "Fresh off the printer" },
     { "type": "text", "id": "preview_subtitle", "label": "Preview subtitle", "default": "Get on the list to shop these first." },
 
     { "type": "header", "content": "Email signup" },
     { "type": "checkbox", "id": "show_signup", "label": "Show email signup", "default": true },
     { "type": "text", "id": "signup_title", "label": "Signup title", "default": "Be first in line" },
-    { "type": "textarea", "id": "signup_text", "label": "Signup text", "default": "Drop your email and we'll tell you the moment the shop opens." },
+    { "type": "textarea", "id": "signup_text", "label": "Signup text", "default": "Drop your email and we'll tell you the moment the shop opens. Every toy designed, printed, and packed by teens." },
     { "type": "text", "id": "signup_placeholder", "label": "Input placeholder", "default": "you@email.com" },
     { "type": "text", "id": "signup_button", "label": "Button text", "default": "Notify me" },
     { "type": "text", "id": "signup_success", "label": "Success message", "default": "You're on the list! 🎉" }
   ],
   "blocks": [
     {
-      "type": "story",
-      "name": "Story card",
+      "type": "line",
+      "name": "Product line",
       "settings": [
-        { "type": "text", "id": "title", "label": "Title", "default": "Made by kids" },
-        { "type": "textarea", "id": "text", "label": "Text", "default": "Every item is designed, printed, and packed by our young makers." }
+        { "type": "text", "id": "name", "label": "Name", "default": "Dragons" },
+        { "type": "text", "id": "flair", "label": "Flair", "default": "Spark & Scale" },
+        {
+          "type": "select", "id": "accent", "label": "Accent color", "default": "dragons",
+          "options": [
+            { "value": "dragons", "label": "Dragons (orange)" },
+            { "value": "dinos", "label": "Dinos (green)" },
+            { "value": "critters", "label": "Critters (blue)" },
+            { "value": "fidgets", "label": "Fidgets (yellow)" },
+            { "value": "teal", "label": "Teal (brand)" }
+          ]
+        }
       ]
     },
     {
@@ -192,8 +259,20 @@
       "name": "Product preview",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Photo" },
-        { "type": "text", "id": "title", "label": "Name", "default": "Product name" },
-        { "type": "text", "id": "tag", "label": "Tag", "default": "Coming soon" }
+        { "type": "text", "id": "title", "label": "Name", "default": "Flexi Dragon" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$12" },
+        { "type": "text", "id": "blurb", "label": "Blurb", "default": "Bends, twists, that's the point." },
+        { "type": "text", "id": "tag", "label": "Badge label", "default": "Dragons" },
+        {
+          "type": "select", "id": "line", "label": "Line color", "default": "dragons",
+          "options": [
+            { "value": "dragons", "label": "Dragons (orange)" },
+            { "value": "dinos", "label": "Dinos (green)" },
+            { "value": "critters", "label": "Critters (blue)" },
+            { "value": "fidgets", "label": "Fidgets (yellow)" },
+            { "value": "teal", "label": "Teal (brand)" }
+          ]
+        }
       ]
     }
   ],
@@ -201,9 +280,10 @@
     {
       "name": "Z3 Landing",
       "blocks": [
-        { "type": "story" },
-        { "type": "story" },
-        { "type": "story" },
+        { "type": "line" },
+        { "type": "line" },
+        { "type": "line" },
+        { "type": "line" },
         { "type": "product" },
         { "type": "product" },
         { "type": "product" }

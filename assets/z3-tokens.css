@@ -1,0 +1,111 @@
+/* ============================================================
+   Z3 Collective — Design tokens (theme-wide)
+   Source of truth: claude.ai/design "Z3 Collective Design System"
+   Combined from tokens/colors.css, typography.css, spacing.css.
+   These CSS variables are available everywhere; the aggressive
+   visual language (paper bg, ink outlines, sticker shadows) is
+   applied per-section so it never fights Dawn's own UI.
+   ============================================================ */
+:root {
+  /* ---- Core palette ---- */
+  --z3-ink: #0C0C11;      /* anchor: text, dark backgrounds */
+  --z3-paper: #F4F4F7;    /* light background */
+  --z3-teal: #0DCEC4;     /* primary / brand / logo */
+  --z3-white: #FFFFFF;
+
+  /* ---- Product-line accents ---- */
+  --z3-dragons: #FF7038;  /* orange */
+  --z3-dinos: #46E66B;    /* green */
+  --z3-critters: #3B9DFF; /* blue */
+  --z3-fidgets: #FFDB00;  /* yellow */
+  --z3-candy: #B392DE;    /* lilac — RESERVED, not launched */
+  --z3-yarn: #F2A8CE;     /* pink — FUTURE line, do not use yet */
+
+  /* ---- Derived tints (mixes of core colors only) ---- */
+  --z3-ink-70: rgba(12, 12, 17, 0.7);
+  --z3-ink-45: rgba(12, 12, 17, 0.45);
+  --z3-ink-12: rgba(12, 12, 17, 0.12);
+  --z3-teal-soft: #DCF9F7;   /* teal-on-paper wash */
+  --z3-teal-deep: #0AA69E;   /* pressed / hover teal */
+
+  /* ---- Semantic aliases ---- */
+  --surface-page: var(--z3-paper);
+  --surface-card: var(--z3-white);
+  --surface-ink: var(--z3-ink);
+  --surface-brand: var(--z3-teal);
+  --surface-wash: var(--z3-teal-soft);
+
+  --text-body: var(--z3-ink);
+  --text-muted: var(--z3-ink-70);
+  --text-faint: var(--z3-ink-45);
+  --text-on-ink: var(--z3-paper);
+  --text-on-brand: var(--z3-ink);
+
+  --border-strong: var(--z3-ink);       /* 2px outlines — signature look */
+  --border-subtle: var(--z3-ink-12);
+
+  --brand: var(--z3-teal);
+  --brand-hover: var(--z3-teal-deep);
+
+  --status-success: var(--z3-dinos);
+  --status-info: var(--z3-critters);
+  --status-warning: var(--z3-fidgets);
+  --status-danger: var(--z3-dragons);
+
+  /* ---- Typography ---- */
+  --font-display: "Space Grotesk", "Arial Black", sans-serif; /* headlines, names, prices */
+  --font-body: "Inter", "Helvetica Neue", sans-serif;         /* body copy, small print */
+
+  --text-hero: 56px;
+  --text-h1: 40px;
+  --text-h2: 28px;
+  --text-h3: 20px;
+  --text-price: 24px;
+  --text-base: 16px;
+  --text-small: 14px;
+  --text-tiny: 12px;
+
+  --weight-display-bold: 700;
+  --weight-display-medium: 500;
+  --weight-body: 400;
+  --weight-body-medium: 500;
+  --weight-body-semibold: 600;
+
+  --leading-tight: 1.05;
+  --leading-snug: 1.25;
+  --leading-body: 1.55;
+  --tracking-display: -0.02em;
+  --tracking-caps: 0.08em;
+
+  /* ---- Spacing scale (4px base) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* ---- Radii ---- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* ---- Borders — 2px ink outline is the signature ---- */
+  --border-width: 2px;
+  --border-width-thin: 1px;
+
+  /* ---- Shadows — hard offset, like a printed sticker. No blur. ---- */
+  --shadow-sticker: 3px 3px 0 var(--z3-ink);
+  --shadow-sticker-lg: 5px 5px 0 var(--z3-ink);
+  --shadow-none: none;
+
+  /* ---- Motion — quick, snappy, a little bouncy ---- */
+  --ease-snap: cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+}
