@@ -82,7 +82,7 @@
 
     <div class="z3-hero">
       {%- if section.settings.logo != blank -%}
-        <img class="z3-logo" src="{{ section.settings.logo | image_url: width: 320 }}" alt="{{ shop.name }}" loading="lazy">
+        <img class="z3-logo" src="{{ section.settings.logo | image_url: width: 320 }}" alt="{{ shop.name }}" width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" loading="lazy">
       {%- endif -%}
       {%- if section.settings.heading != blank -%}
         <h1>{{ section.settings.heading }}</h1>
@@ -116,7 +116,7 @@
         {%- for block in product_blocks -%}
           <div class="z3-product" {{ block.shopify_attributes }}>
             {%- if block.settings.image != blank -%}
-              <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.title }}" loading="lazy">
+              <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.title }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" loading="lazy">
             {%- else -%}
               <div class="z3-ph">🧩</div>
             {%- endif -%}
