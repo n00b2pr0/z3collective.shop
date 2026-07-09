@@ -1,0 +1,32 @@
+/* ============================================
+   Z3 Collective — Typography tokens
+   Two fonts max. Never mix them in one line.
+   ============================================ */
+:root {
+  --font-display: "Space Grotesk", "Arial Black", sans-serif; /* headlines, names, prices */
+  --font-body: "Inter", "Helvetica Neue", sans-serif;         /* body copy, small print */
+
+  /* Scale */
+  --text-hero: 56px;      /* big headlines / hero */
+  --text-h1: 40px;
+  --text-h2: 28px;
+  --text-h3: 20px;
+  --text-price: 24px;     /* prices — always display font */
+  --text-base: 16px;
+  --text-small: 14px;
+  --text-tiny: 12px;      /* small print, legal */
+
+  /* Weights */
+  --weight-display-bold: 700;   /* headlines */
+  --weight-display-medium: 500; /* subheads, prices */
+  --weight-body: 400;
+  --weight-body-medium: 500;
+  --weight-body-semibold: 600;
+
+  /* Rhythm */
+  --leading-tight: 1.05;  /* display */
+  --leading-snug: 1.25;
+  --leading-body: 1.55;
+  --tracking-display: -0.02em;
+  --tracking-caps: 0.08em; /* uppercase labels/eyebrows */
+}

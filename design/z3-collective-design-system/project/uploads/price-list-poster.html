@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z3 Collective — Price list</title>
+<style>
+  /* ===== Z3 Collective design tokens ===== */
+  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+  :root{
+    --ink:#0C0C11;
+    --paper:#F4F4F7;
+    --teal:#0DCEC4;
+    --teal-soft:#DCF9F7;
+    --white:#FFFFFF;
+    --ink-70:rgba(12,12,17,0.7);
+    --ink-45:rgba(12,12,17,0.45);
+    --ink-12:rgba(12,12,17,0.12);
+    --font-display:"Space Grotesk","Arial Black",sans-serif;
+    --font-body:"Inter","Helvetica Neue",sans-serif;
+    --page-w:8.5in;
+    --page-h:11in;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:#888;font-family:var(--font-body);color:var(--ink);-webkit-font-smoothing:antialiased;}
+  a{color:var(--teal);}
+  a:hover{color:#0AA69E;}
+
+  /* The page = one sheet of Letter paper */
+  .page{
+    width:var(--page-w);
+    height:var(--page-h);
+    margin:24px auto;
+    background:var(--paper);
+    box-shadow:0 6px 24px rgba(0,0,0,.3);
+    display:flex;
+    flex-direction:column;
+    padding:0.45in 0.5in 0.45in;
+    overflow:hidden;
+  }
+
+  /* ===== Header ===== */
+  .header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:0.3in;
+    margin-bottom:0.32in;
+  }
+  .logo-box{
+    background:var(--ink);
+    color:#F4F4F7;
+    border-radius:16px;
+    box-shadow:3px 3px 0 var(--teal);
+    padding:16px 26px 19px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:38px;
+    line-height:1.05;
+    white-space:nowrap;
+  }
+  .logo-box .z3{letter-spacing:0.04em;-webkit-text-stroke:1.2px #F4F4F7;}
+  .logo-box .word{letter-spacing:-0.01em;}
+  .header-copy{text-align:right;}
+  .eyebrow{
+    font-family:var(--font-body);
+    font-size:12px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-70);
+    margin-bottom:8px;
+  }
+  .tagline{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:26px;
+    letter-spacing:-0.02em;
+    line-height:1.05;
+  }
+
+  /* ===== Price grid — sticker cards ===== */
+  .grid{
+    flex:1 1 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr 1fr;
+    gap:0.24in;
+    margin-bottom:0.24in;
+  }
+  .cat{
+    background:var(--white);
+    border:2px solid var(--ink);
+    border-radius:16px;
+    box-shadow:4px 4px 0 var(--accent,var(--ink));
+    padding:20px 22px 16px;
+    display:flex;
+    flex-direction:column;
+  }
+  .cat.dragons{--accent:#FF7038;}
+  .cat.critters{--accent:#3B9DFF;}
+  .cat.dinos{--accent:#46E66B;}
+  .cat.fidgets{--accent:#FFDB00;}
+  .cat h2{
+    font-family:var(--font-display);
+    font-size:26px;
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.05;
+    padding-bottom:12px;
+    margin-bottom:14px;
+    border-bottom:3px solid var(--accent,var(--ink-12));
+  }
+  .item{
+    display:flex;
+    align-items:baseline;
+    font-family:var(--font-display);
+    font-size:19px;
+    font-weight:500;
+    line-height:1.25;
+    margin:10px 0;
+  }
+  .item .name{white-space:nowrap;letter-spacing:-0.02em;}
+  .item .dots{
+    flex:1 1 auto;
+    border-bottom:2px dotted var(--ink-45);
+    margin:0 10px;
+    transform:translateY(-4px);
+  }
+  .item .price{white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;}
+  .item .unit{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--ink-70);}
+  .note{
+    display:block;
+    font-family:var(--font-body);
+    font-size:13px;
+    line-height:1.55;
+    color:var(--ink-70);
+    margin:-4px 0 10px 2px;
+  }
+  .note b{font-family:var(--font-display);font-weight:700;color:var(--ink);}
+
+  /* ===== Payment band ===== */
+  .pay{
+    flex:0 0 auto;
+    background:var(--teal-soft);
+    border:2px solid var(--ink);
+    border-radius:16px;
+    box-shadow:3px 3px 0 var(--ink);
+    display:flex;
+    align-items:stretch;
+    padding:16px 10px;
+  }
+  .pay .col{
+    flex:1 1 0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    gap:12px;
+    padding:6px 12px;
+  }
+  .pay .col + .col{border-left:1px solid var(--ink-12);}
+  .pay h3{
+    font-family:var(--font-display);
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:-0.02em;
+  }
+  .pay .graphic{
+    height:104px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .pay .graphic svg{width:72px;height:72px;stroke:var(--ink);}
+  .qr-frame{
+    background:var(--white);
+    border:2px solid var(--ink);
+    border-radius:10px;
+    padding:6px;
+    line-height:0;
+  }
+  .qr-frame img{height:88px;width:88px;object-fit:contain;}
+  .qr-fallback{
+    height:88px;width:88px;border:2px dashed var(--ink-45);border-radius:6px;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    font-family:var(--font-body);font-size:11px;line-height:1.55;color:var(--ink-70);padding:8px;
+  }
+  .pay .hint{
+    font-family:var(--font-body);
+    font-size:12px;
+    line-height:1.55;
+    color:var(--ink-70);
+    text-align:center;
+  }
+
+  /* ===== Print: exactly one Letter page ===== */
+  @page{size:letter portrait;margin:0;}
+  @media print{
+    html,body{background:#fff;}
+    .page{margin:0;box-shadow:none;width:8.5in;height:11in;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+      <div class="logo-box"><span class="z3">Z3</span> <span class="word">collective.</span></div>
+      <div class="header-copy">
+        <p class="eyebrow">A teen-preneur business &middot; price list</p>
+        <p class="tagline">Made to move by teens.</p>
+      </div>
+    </div>
+
+    <!-- ===== MENU ===== -->
+    <div class="grid">
+
+      <!-- Dragons -->
+      <div class="cat dragons">
+        <h2>Dragons</h2>
+        <div class="item"><span class="name">Dragon</span><span class="dots"></span><span class="price">$7</span></div>
+        <div class="item"><span class="name">Dragon + egg</span><span class="dots"></span><span class="price">$15</span></div>
+        <span class="note">Mushroom dragon + egg <b>$17</b></span>
+        <div class="item"><span class="name">Wish dragon</span><span class="dots"></span><span class="price">$12</span></div>
+      </div>
+
+      <!-- Critters -->
+      <div class="cat critters">
+        <h2>Critters</h2>
+        <div class="item"><span class="name">Animal</span><span class="dots"></span><span class="price">$4</span></div>
+        <div class="item"><span class="name">Animal &times;3</span><span class="dots"></span><span class="price">$10</span></div>
+        <div class="item"><span class="name">Animal &times;10</span><span class="dots"></span><span class="price">$30</span></div>
+      </div>
+
+      <!-- Dinos -->
+      <div class="cat dinos">
+        <h2>Dinos</h2>
+        <div class="item"><span class="name">Dino</span><span class="dots"></span><span class="price">$5</span></div>
+        <div class="item"><span class="name">Dino &times;3</span><span class="dots"></span><span class="price">$12</span></div>
+        <div class="item"><span class="name">Dino + egg</span><span class="dots"></span><span class="price">$12</span></div>
+        <div class="item"><span class="name">Dino &times;3 + egg</span><span class="dots"></span><span class="price">$18</span></div>
+      </div>
+
+      <!-- Fidgets -->
+      <div class="cat fidgets">
+        <h2>Fidgets</h2>
+        <div class="item"><span class="name">Clickys</span><span class="dots"></span><span class="price">$2 <span class="unit">per cap</span></span></div>
+        <span class="note">Base with strap included</span>
+        <div class="item"><span class="name">Twisty egg</span><span class="dots"></span><span class="price">$7</span></div>
+      </div>
+
+    </div>
+
+    <!-- ===== PAYMENT BAND ===== -->
+    <div class="pay">
+
+      <!-- Cash -->
+      <div class="col">
+        <h3>Cash</h3>
+        <div class="graphic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="7" width="20" height="10" rx="1.5"></rect>
+            <line x1="5.5" y1="7" x2="5.5" y2="17"></line>
+            <line x1="18.5" y1="7" x2="18.5" y2="17"></line>
+            <text x="12" y="15" font-size="6" font-weight="700" text-anchor="middle" fill="currentColor" stroke="none" font-family="'Space Grotesk',sans-serif">$</text>
+          </svg>
+        </div>
+        <p class="hint">We can make change.</p>
+      </div>
+
+      <!-- Card -->
+      <div class="col">
+        <h3>Card</h3>
+        <div class="graphic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+            <line x1="2" y1="10" x2="22" y2="10"></line>
+          </svg>
+        </div>
+        <p class="hint">Tap or swipe at the booth.</p>
+      </div>
+
+      <!-- Venmo -->
+      <div class="col">
+        <h3>Venmo</h3>
+        <div class="graphic">
+          <div class="qr-frame">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=352x352&amp;color=0C0C11&amp;bgcolor=FFFFFF&amp;data=https%3A%2F%2Fvenmo.com%2Fcode%3Fuser_id%3D4634211084403822060%26created%3D1783381161.29826%26printed%3D1" alt="Venmo QR code"
+                 onerror="this.parentElement.style.display='none';this.parentElement.nextElementSibling.style.display='flex';">
+          </div>
+          <div class="qr-fallback" style="display:none;">Venmo QR<br>goes here</div>
+        </div>
+        <p class="hint">Scan to pay us on Venmo.</p>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>

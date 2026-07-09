@@ -2,58 +2,8 @@
   "sections": {
     "z3_landing": {
       "type": "z3-landing",
-      "blocks": {
-        "story1": {
-          "type": "story",
-          "settings": {
-            "title": "Made by teens",
-            "text": "Every item is designed, printed, and packed by our young makers."
-          }
-        },
-        "story2": {
-          "type": "story",
-          "settings": {
-            "title": "One of a kind",
-            "text": "Small batches, custom colors, and designs you won't find anywhere else."
-          }
-        },
-        "story3": {
-          "type": "story",
-          "settings": {
-            "title": "Learning as we go",
-            "text": "Z3 Collective is a real business run by teens learning how to make, sell, and ship."
-          }
-        },
-        "product1": {
-          "type": "product",
-          "settings": {
-            "title": "Coming soon",
-            "tag": "In the works"
-          }
-        },
-        "product2": {
-          "type": "product",
-          "settings": {
-            "title": "Coming soon",
-            "tag": "In the works"
-          }
-        },
-        "product3": {
-          "type": "product",
-          "settings": {
-            "title": "Coming soon",
-            "tag": "In the works"
-          }
-        }
-      },
-      "block_order": [
-        "story1",
-        "story2",
-        "story3",
-        "product1",
-        "product2",
-        "product3"
-      ]
+      "blocks": {},
+      "block_order": []
     }
   },
   "order": [

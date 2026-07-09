@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Price List" description="One-page Letter price list — line-colored sticker cards + payment band" -->
+<helmet>
+<script src="./ds-base.js"></script>
+<style>
+  html,body{margin:0;padding:0;background:#888;-webkit-font-smoothing:antialiased;}
+  @page{size:letter portrait;margin:0;}
+  @media print{
+    html,body{background:#fff;}
+    .pl-page{margin:0 !important;box-shadow:none !important;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</helmet>
+
+<div class="pl-page" style="width:8.5in;height:11in;margin:24px auto;background:var(--z3-paper);box-shadow:0 6px 24px rgba(0,0,0,.3);display:flex;flex-direction:column;padding:0.45in 0.5in;overflow:hidden;box-sizing:border-box;color:var(--z3-ink);font-family:var(--font-body);">
+
+  <!-- HEADER -->
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:0.3in;margin-bottom:0.32in;">
+    <div style="background:var(--z3-ink);color:var(--z3-paper);border-radius:16px;box-shadow:3px 3px 0 var(--z3-teal);padding:16px 26px 19px;font-family:var(--font-display);font-weight:700;font-size:38px;line-height:1.05;white-space:nowrap;"><span style="letter-spacing:0.04em;-webkit-text-stroke:1.2px var(--z3-paper);">Z3</span> <span style="letter-spacing:-0.01em;">collective.</span></div>
+    <div style="text-align:right;">
+      <p style="margin:0 0 8px;font-family:var(--font-body);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--z3-ink-70);">A teen-preneur business &middot; price list</p>
+      <p style="margin:0;font-family:var(--font-display);font-weight:700;font-size:26px;letter-spacing:-0.02em;line-height:1.05;">Made to move by teens.</p>
+    </div>
+  </div>
+
+  <!-- MENU GRID -->
+  <div style="flex:1 1 auto;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:0.24in;margin-bottom:0.24in;">
+
+    <!-- Dragons -->
+    <div style="background:var(--z3-white);border:2px solid var(--z3-ink);border-radius:16px;box-shadow:4px 4px 0 var(--z3-dragons);padding:20px 22px 16px;display:flex;flex-direction:column;">
+      <h2 style="margin:0 0 14px;font-family:var(--font-display);font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.05;padding-bottom:12px;border-bottom:3px solid var(--z3-dragons);">Dragons</h2>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Dragon</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$7</span></div>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Dragon + egg</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$15</span></div>
+      <span style="display:block;font-family:var(--font-body);font-size:13px;line-height:1.55;color:var(--z3-ink-70);margin:-4px 0 10px 2px;">Mushroom dragon + egg <b style="font-family:var(--font-display);font-weight:700;color:var(--z3-ink);">$17</b></span>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Wish dragon</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$12</span></div>
+    </div>
+
+    <!-- Critters -->
+    <div style="background:var(--z3-white);border:2px solid var(--z3-ink);border-radius:16px;box-shadow:4px 4px 0 var(--z3-critters);padding:20px 22px 16px;display:flex;flex-direction:column;">
+      <h2 style="margin:0 0 14px;font-family:var(--font-display);font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.05;padding-bottom:12px;border-bottom:3px solid var(--z3-critters);">Critters</h2>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Animal</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$4</span></div>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Animal &times;3</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$10</span></div>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Animal &times;10</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$30</span></div>
+    </div>
+
+    <!-- Dinos -->
+    <div style="background:var(--z3-white);border:2px solid var(--z3-ink);border-radius:16px;box-shadow:4px 4px 0 var(--z3-dinos);padding:20px 22px 16px;display:flex;flex-direction:column;">
+      <h2 style="margin:0 0 14px;font-family:var(--font-display);font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.05;padding-bottom:12px;border-bottom:3px solid var(--z3-dinos);">Dinos</h2>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Dino</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$5</span></div>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Dino &times;3</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$12</span></div>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Dino + egg</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$12</span></div>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Dino &times;3 + egg</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$18</span></div>
+    </div>
+
+    <!-- Fidgets -->
+    <div style="background:var(--z3-white);border:2px solid var(--z3-ink);border-radius:16px;box-shadow:4px 4px 0 var(--z3-fidgets);padding:20px 22px 16px;display:flex;flex-direction:column;">
+      <h2 style="margin:0 0 14px;font-family:var(--font-display);font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.05;padding-bottom:12px;border-bottom:3px solid var(--z3-fidgets);">Fidgets</h2>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Clickys</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$2 <span style="font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--z3-ink-70);">per cap</span></span></div>
+      <span style="display:block;font-family:var(--font-body);font-size:13px;line-height:1.55;color:var(--z3-ink-70);margin:-4px 0 10px 2px;">Base with strap included</span>
+      <div style="display:flex;align-items:baseline;font-family:var(--font-display);font-size:19px;font-weight:500;line-height:1.25;margin:10px 0;"><span style="white-space:nowrap;letter-spacing:-0.02em;">Twisty egg</span><span style="flex:1 1 auto;border-bottom:2px dotted var(--z3-ink-45);margin:0 10px;transform:translateY(-4px);"></span><span style="white-space:nowrap;font-weight:700;font-size:20px;letter-spacing:-0.02em;">$7</span></div>
+    </div>
+
+  </div>
+
+  <!-- PAYMENT BAND -->
+  <div style="flex:0 0 auto;background:var(--z3-teal-soft);border:2px solid var(--z3-ink);border-radius:16px;box-shadow:3px 3px 0 var(--z3-ink);display:flex;align-items:stretch;padding:16px 10px;">
+
+    <!-- Cash -->
+    <div style="flex:1 1 0;display:flex;flex-direction:column;align-items:center;gap:12px;padding:6px 12px;">
+      <h3 style="margin:0;font-family:var(--font-display);font-size:20px;font-weight:700;letter-spacing:-0.02em;">Cash</h3>
+      <div style="height:104px;display:flex;align-items:center;justify-content:center;">
+        <svg viewBox="0 0 24 24" width="72" height="72" fill="none" stroke="var(--z3-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="7" width="20" height="10" rx="1.5"></rect>
+          <line x1="5.5" y1="7" x2="5.5" y2="17"></line>
+          <line x1="18.5" y1="7" x2="18.5" y2="17"></line>
+          <text x="12" y="15" font-size="6" font-weight="700" text-anchor="middle" fill="var(--z3-ink)" stroke="none" font-family="'Space Grotesk',sans-serif">$</text>
+        </svg>
+      </div>
+      <p style="margin:0;font-family:var(--font-body);font-size:12px;line-height:1.55;color:var(--z3-ink-70);text-align:center;">We can make change.</p>
+    </div>
+
+    <!-- Card -->
+    <div style="flex:1 1 0;display:flex;flex-direction:column;align-items:center;gap:12px;padding:6px 12px;border-left:1px solid var(--z3-ink-12);">
+      <h3 style="margin:0;font-family:var(--font-display);font-size:20px;font-weight:700;letter-spacing:-0.02em;">Card</h3>
+      <div style="height:104px;display:flex;align-items:center;justify-content:center;">
+        <svg viewBox="0 0 24 24" width="72" height="72" fill="none" stroke="var(--z3-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+          <line x1="2" y1="10" x2="22" y2="10"></line>
+        </svg>
+      </div>
+      <p style="margin:0;font-family:var(--font-body);font-size:12px;line-height:1.55;color:var(--z3-ink-70);text-align:center;">Tap or swipe at the booth.</p>
+    </div>
+
+    <!-- Venmo -->
+    <div style="flex:1 1 0;display:flex;flex-direction:column;align-items:center;gap:12px;padding:6px 12px;border-left:1px solid var(--z3-ink-12);">
+      <h3 style="margin:0;font-family:var(--font-display);font-size:20px;font-weight:700;letter-spacing:-0.02em;">Venmo</h3>
+      <div style="height:104px;display:flex;align-items:center;justify-content:center;">
+        <div style="background:var(--z3-white);border:2px solid var(--z3-ink);border-radius:10px;padding:6px;line-height:0;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=352x352&amp;color=0C0C11&amp;bgcolor=FFFFFF&amp;data=https%3A%2F%2Fvenmo.com%2Fcode%3Fuser_id%3D4634211084403822060%26created%3D1783381161.29826%26printed%3D1" alt="Venmo QR code" style="height:88px;width:88px;object-fit:contain;">
+        </div>
+      </div>
+      <p style="margin:0;font-family:var(--font-body);font-size:12px;line-height:1.55;color:var(--z3-ink-70);text-align:center;">Scan to pay us on Venmo.</p>
+    </div>
+
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

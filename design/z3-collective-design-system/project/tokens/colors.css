@@ -1,0 +1,51 @@
+/* ============================================
+   Z3 Collective — Color tokens
+   Ink + Paper + Teal core; one accent per line.
+   ============================================ */
+:root {
+  /* Core palette */
+  --z3-ink: #0C0C11;      /* anchor: text, dark backgrounds */
+  --z3-paper: #F4F4F7;    /* light background */
+  --z3-teal: #0DCEC4;     /* primary / brand / logo */
+  --z3-white: #FFFFFF;
+
+  /* Product-line accents */
+  --z3-dragons: #FF7038;  /* orange — intentionally offset from Bambu PLA Basic Orange #FF6A13 */
+  --z3-dinos: #46E66B;    /* green */
+  --z3-critters: #3B9DFF; /* blue */
+  --z3-fidgets: #FFDB00;  /* yellow — intentionally offset from Bambu PLA Basic Sunflower #FEC600 */
+  --z3-candy: #B392DE;    /* lilac — RESERVED, not launched. Do not use. Target filament: Bambu PLA Matte Lilac Purple #AE96D4 */
+  --z3-yarn: #F2A8CE;     /* pink — FUTURE line. Color locked, do not use yet. Target filament: Bambu PLA Matte Sakura Pink #E8AFCF */
+
+  /* Derived tints (mixes of core colors only) */
+  --z3-ink-70: rgba(12, 12, 17, 0.7);
+  --z3-ink-45: rgba(12, 12, 17, 0.45);
+  --z3-ink-12: rgba(12, 12, 17, 0.12);
+  --z3-teal-soft: #DCF9F7;   /* teal-on-paper wash */
+  --z3-teal-deep: #0AA69E;   /* pressed / hover teal */
+
+  /* Semantic aliases */
+  --surface-page: var(--z3-paper);
+  --surface-card: var(--z3-white);
+  --surface-ink: var(--z3-ink);
+  --surface-brand: var(--z3-teal);
+  --surface-wash: var(--z3-teal-soft);
+
+  --text-body: var(--z3-ink);
+  --text-muted: var(--z3-ink-70);
+  --text-faint: var(--z3-ink-45);
+  --text-on-ink: var(--z3-paper);
+  --text-on-brand: var(--z3-ink);
+
+  --border-strong: var(--z3-ink);       /* 2px outlines — signature look */
+  --border-subtle: var(--z3-ink-12);
+
+  --brand: var(--z3-teal);
+  --brand-hover: var(--z3-teal-deep);
+
+  /* Semantic status (reuse line hues; no new colors invented) */
+  --status-success: var(--z3-dinos);
+  --status-info: var(--z3-critters);
+  --status-warning: var(--z3-fidgets);
+  --status-danger: var(--z3-dragons);
+}

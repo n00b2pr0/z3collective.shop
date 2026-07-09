@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<title>Line Sign — options</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  html,body{margin:0;padding:0;-webkit-font-smoothing:antialiased;font-family:var(--font-body);}
+  .badge{position:absolute;white-space:nowrap;font-family:var(--font-body);font-weight:700;font-size:14px;color:#111;background:#fff;border:2px solid #111;border-radius:999px;padding:4px 14px;box-shadow:2px 2px 0 #111;}
+  .cap{white-space:nowrap;}
+  .cap{position:absolute;font-family:var(--font-body);font-size:13px;color:#3a3a3a;}
+
+  /* ---- shared sign shell ---- */
+  .sign{position:absolute;width:672px;height:480px;border:2px solid var(--z3-ink);border-radius:40px;
+        box-shadow:7px 7px 0 var(--z3-ink);box-sizing:border-box;display:flex;flex-direction:column;
+        overflow:hidden;color:var(--z3-ink);font-family:var(--font-body);}
+
+  .pill-ink{display:inline-flex;align-items:center;background:var(--z3-ink);color:var(--z3-paper);border-radius:999px;
+            padding:9px 26px 11px;font-family:var(--font-body);font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:0.16em;}
+  .pill-orange{display:inline-flex;align-items:center;background:var(--z3-dragons);color:var(--z3-ink);border-radius:999px;
+            padding:9px 26px 11px;font-family:var(--font-body);font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:0.16em;}
+
+  .flair{margin:0;font-family:var(--font-display);font-weight:700;letter-spacing:-0.03em;line-height:1;white-space:nowrap;}
+
+  .z3{display:inline-flex;white-space:nowrap;background:var(--z3-ink);color:var(--z3-paper);border-radius:11px;
+      padding:6px 13px 7px;font-family:var(--font-display);font-weight:700;font-size:18px;line-height:1;}
+  .z3 .mk{letter-spacing:0.05em;}
+  .z3 .co{letter-spacing:-0.01em;}
+</style>
+</head>
+<body>
+
+  <!-- ============ 1a · Sticker box (current) ============ -->
+  <div class="badge" style="left:100px;top:96px;">1a · Sticker box</div>
+  <div class="cap" style="left:250px;top:100px;">the current one — flair on a white sticker</div>
+  <div class="sign" style="left:100px;top:140px;background:var(--z3-dragons);padding:0.5in 0.55in;">
+    <div style="text-align:center;"><span class="pill-ink">Dragons</span></div>
+    <div style="margin:auto 0;text-align:center;">
+      <span style="display:inline-flex;background:var(--z3-white);border:2px solid var(--z3-ink);border-radius:20px;box-shadow:5px 5px 0 var(--z3-ink);padding:24px 48px 28px;">
+        <span class="flair" style="font-size:52px;">Spark &amp; Scale</span>
+      </span>
+    </div>
+    <div style="text-align:center;"><span class="z3"><span class="mk">Z3</span>&nbsp;<span class="co">collective.</span></span></div>
+  </div>
+
+  <!-- ============ 1b · Ink field ============ -->
+  <div class="badge" style="left:872px;top:96px;">1b · Ink field</div>
+  <div class="cap" style="left:1010px;top:100px;">reversed — orange on dark, high drama</div>
+  <div class="sign" style="left:872px;top:140px;background:var(--z3-ink);padding:0.5in 0.55in;color:var(--z3-paper);">
+    <div style="text-align:center;"><span class="pill-orange">Dragons</span></div>
+    <div style="margin:auto 0;text-align:center;">
+      <span class="flair" style="font-size:66px;color:var(--z3-dragons);">Spark &amp; Scale</span>
+    </div>
+    <div style="text-align:center;">
+      <span class="z3" style="background:var(--z3-paper);color:var(--z3-ink);"><span class="mk">Z3</span>&nbsp;<span class="co">collective.</span></span>
+    </div>
+  </div>
+
+  <!-- ============ 1c · Label / header band ============ -->
+  <div class="badge" style="left:100px;top:716px;">1c · Header band</div>
+  <div class="cap" style="left:262px;top:720px;">white card, orange name band up top</div>
+  <div class="sign" style="left:100px;top:760px;background:var(--z3-white);padding:0;">
+    <div style="background:var(--z3-dragons);border-bottom:2px solid var(--z3-ink);padding:18px 0.55in 20px;display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-family:var(--font-display);font-weight:700;font-size:40px;letter-spacing:-0.02em;">Dragons</span>
+      <span class="z3" style="font-size:16px;"><span class="mk">Z3</span>&nbsp;<span class="co">collective.</span></span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:0 0.6in;text-align:center;">
+      <span class="flair" style="font-size:56px;">Spark &amp; Scale</span>
+      <p style="margin:0;max-width:4.4in;font-family:var(--font-body);font-size:15px;line-height:1.55;color:var(--z3-ink-70);text-wrap:pretty;">Flexi dragons that bend nose to tail. Twist one and every scale moves.</p>
+    </div>
+  </div>
+
+  <!-- ============ 1d · Poster ============ -->
+  <div class="badge" style="left:872px;top:716px;">1d · Poster</div>
+  <div class="cap" style="left:998px;top:720px;">oversized type, corner tag, editorial</div>
+  <div class="sign" style="left:872px;top:760px;background:var(--z3-dragons);padding:0.5in 0.55in;">
+    <div><span class="pill-ink" style="font-size:16px;padding:7px 20px 9px;">Dragons</span></div>
+    <div style="margin:auto 0;">
+      <h1 class="flair" style="font-size:86px;line-height:0.86;white-space:normal;text-align:left;">Spark<br>&amp; Scale</h1>
+      <p style="margin:18px 0 0;max-width:4in;font-family:var(--font-body);font-size:15px;line-height:1.55;color:var(--z3-ink);opacity:.82;text-wrap:pretty;">Flexi dragons that bend nose to tail. Twist one and every scale moves.</p>
+    </div>
+    <div style="text-align:right;"><span class="z3"><span class="mk">Z3</span>&nbsp;<span class="co">collective.</span></span></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Z3 Line Signs — print</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  @page { size: 7in 5in; margin: 0; }
+  html, body { margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .page {
+    width: 7in; height: 5in;
+    display: flex; align-items: center; justify-content: center;
+    background: #fff; box-sizing: border-box;
+    break-after: page; page-break-after: always;
+  }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+
+  .ls-tag {
+    position: relative; width: 7in; height: 5in;
+    border: 2px solid var(--z3-ink); border-radius: 40px;
+    box-sizing: border-box; display: flex; flex-direction: column;
+    padding: 0.5in 0.55in; color: var(--z3-ink);
+    font-family: var(--font-body); overflow: hidden;
+  }
+  .ls-tag[data-line="Dragons"]  { background: #FF7038; }
+  .ls-tag[data-line="Dinos"]    { background: #46E66B; }
+  .ls-tag[data-line="Critters"] { background: #3B9DFF; }
+  .ls-tag[data-line="Fidgets"]  { background: #FFDB00; }
+
+  .ls-eyebrow {
+    display: inline-flex; align-items: center;
+    background: var(--z3-ink); color: var(--z3-paper);
+    border-radius: 999px; padding: 8px 22px 10px;
+    font-family: var(--font-body); font-weight: 700; font-size: 24px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .ls-hero { margin: auto 0; }
+  .ls-flair {
+    margin: 0; font-family: var(--font-display); font-weight: 700;
+    font-size: 98px; letter-spacing: -0.03em; line-height: 0.86;
+    text-wrap: balance; max-width: 5in;
+  }
+  .ls-blurb {
+    margin: 18px 0 0; max-width: 4.4in;
+    font-family: var(--font-body); font-size: 20px; font-weight: 600;
+    line-height: 1.4; color: var(--z3-ink); text-wrap: pretty;
+  }
+  .ls-footer { text-align: right; }
+  .ls-logo {
+    display: inline-block; white-space: nowrap;
+    background: var(--z3-ink); color: var(--z3-paper);
+    border-radius: 11px; padding: 6px 13px 7px;
+    font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1;
+  }
+  .ls-logo .mk { letter-spacing: 0.05em; }
+  .ls-logo .co { letter-spacing: -0.01em; }
+
+  /* screen preview: gray desk with drop shadow + gaps */
+  @media screen {
+    body { background: #8a8a90; padding: 24px; display: flex; flex-direction: column; gap: 24px; align-items: center; }
+    .page { box-shadow: 0 8px 30px rgba(0,0,0,.3); }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="ls-tag" data-line="Dragons">
+      <div><span class="ls-eyebrow">Dragons</span></div>
+      <div class="ls-hero">
+        <h1 class="ls-flair">Spark &amp; Scale</h1>
+        <p class="ls-blurb">Dragons that bend head to tail. Hatch your collection.</p>
+      </div>
+      <div class="ls-footer"><span class="ls-logo"><span class="mk">Z3</span> <span class="co">collective.</span></span></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="ls-tag" data-line="Dinos">
+      <div><span class="ls-eyebrow">Dinos</span></div>
+      <div class="ls-hero">
+        <h1 class="ls-flair">Stomp &amp; Roar</h1>
+        <p class="ls-blurb">Bend it, stomp it, hear it roar.</p>
+      </div>
+      <div class="ls-footer"><span class="ls-logo"><span class="mk">Z3</span> <span class="co">collective.</span></span></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="ls-tag" data-line="Critters">
+      <div><span class="ls-eyebrow">Critters</span></div>
+      <div class="ls-hero">
+        <h1 class="ls-flair">Wild &amp; Whimsy</h1>
+        <p class="ls-blurb">Small critters. Big adventures. Wild and imaginative worlds.</p>
+      </div>
+      <div class="ls-footer"><span class="ls-logo"><span class="mk">Z3</span> <span class="co">collective.</span></span></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="ls-tag" data-line="Fidgets">
+      <div><span class="ls-eyebrow">Fidgets</span></div>
+      <div class="ls-hero">
+        <h1 class="ls-flair">Twist &amp; Click</h1>
+        <p class="ls-blurb">Busy hands, calm brain. Click, twist, repeat.</p>
+      </div>
+      <div class="ls-footer"><span class="ls-logo"><span class="mk">Z3</span> <span class="co">collective.</span></span></div>
+    </div>
+  </div>
+</body>
+</html>

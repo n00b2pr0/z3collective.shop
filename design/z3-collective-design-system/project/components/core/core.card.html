@@ -1,0 +1,60 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Core" subtitle="Button, IconButton, Badge, Tag, Card" -->
+<!DOCTYPE html>
+<html><head>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body style="margin:0;background:var(--z3-paper);">
+<div id="root"></div>
+<script type="text/babel">
+const { Button, IconButton, Badge, Tag, Card } = window.Z3CollectiveDesignSystem_07fe72;
+const cart = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+);
+function Demo() {
+  return (
+    <div style={{ padding: 16, display: "grid", gap: 14 }}>
+      <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+        <Button>Add to cart</Button>
+        <Button variant="secondary">Details</Button>
+        <Button variant="ink">Meet the makers</Button>
+        <Button variant="ghost">Skip</Button>
+        <Button disabled>Sold out</Button>
+      </div>
+      <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+        <Button size="sm">Small</Button>
+        <Button size="lg">Large</Button>
+        <Button accent="var(--z3-dragons)">Shop Dragons</Button>
+        <IconButton label="Cart">{cart}</IconButton>
+        <IconButton quiet size="sm" label="Cart">{cart}</IconButton>
+      </div>
+      <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+        <Badge>New</Badge>
+        <Badge line="dragons">Dragons</Badge>
+        <Badge line="dinos">Dinos</Badge>
+        <Badge line="critters">Critters</Badge>
+        <Badge line="fidgets">Fidgets</Badge>
+        <Badge ink>Sold out</Badge>
+        <Tag>flexi</Tag>
+        <Tag selected onClick={() => {}}>eggs</Tag>
+        <Tag onClick={() => {}}>under $10</Tag>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+        <Card interactive>
+          <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 18 }}>Flexi Dragon</div>
+          <div style={{ fontSize: 13, color: "var(--text-muted)" }}>Bends, twists, that's the point.</div>
+        </Card>
+        <Card quiet>
+          <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 18 }}>Quiet card</div>
+          <div style={{ fontSize: 13, color: "var(--text-muted)" }}>1px border, no shadow.</div>
+        </Card>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body></html>
