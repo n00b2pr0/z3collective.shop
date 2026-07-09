@@ -2,63 +2,8 @@
   "sections": {
     "z3_landing": {
       "type": "z3-landing",
-      "blocks": {
-        "line_dragons": {
-          "type": "line",
-          "settings": { "name": "Dragons", "flair": "Spark & Scale", "accent": "dragons" }
-        },
-        "line_dinos": {
-          "type": "line",
-          "settings": { "name": "Dinos", "flair": "Stomp & Roar", "accent": "dinos" }
-        },
-        "line_critters": {
-          "type": "line",
-          "settings": { "name": "Critters", "flair": "Wild & Whimsy", "accent": "critters" }
-        },
-        "line_fidgets": {
-          "type": "line",
-          "settings": { "name": "Fidgets", "flair": "Twist & Click", "accent": "fidgets" }
-        },
-        "product1": {
-          "type": "product",
-          "settings": {
-            "title": "Flexi Dragon",
-            "price": "$12",
-            "blurb": "Bends, twists, that's the point.",
-            "tag": "Dragons",
-            "line": "dragons"
-          }
-        },
-        "product2": {
-          "type": "product",
-          "settings": {
-            "title": "Flexi Rex",
-            "price": "$12",
-            "blurb": "Stomps on desks everywhere.",
-            "tag": "Dinos",
-            "line": "dinos"
-          }
-        },
-        "product3": {
-          "type": "product",
-          "settings": {
-            "title": "Pocket Fox",
-            "price": "$10",
-            "blurb": "Fits in a pocket. Prefers yours.",
-            "tag": "Critters",
-            "line": "critters"
-          }
-        }
-      },
-      "block_order": [
-        "line_dragons",
-        "line_dinos",
-        "line_critters",
-        "line_fidgets",
-        "product1",
-        "product2",
-        "product3"
-      ]
+      "blocks": {},
+      "block_order": []
     }
   },
   "order": [
