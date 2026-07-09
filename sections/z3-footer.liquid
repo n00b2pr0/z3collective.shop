@@ -1,0 +1,66 @@
+{%- comment -%}
+  Z3 Collective — site footer.
+  Stacked logo + tagline ("Made to move by teens.") + copyright.
+  Ink background, paper text, teal accents — from the brand's tagline/voice spec.
+{%- endcomment -%}
+{%- style -%}
+  #z3-footer-{{ section.id }} {
+    background: var(--surface-ink);
+    color: var(--text-on-ink);
+    margin-top: var(--space-9);
+  }
+  #z3-footer-{{ section.id }} .z3-footer-wrap {
+    max-width: 1120px; margin: 0 auto; padding: var(--space-8) var(--space-6);
+  }
+  #z3-footer-{{ section.id }} .z3-footer-top {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--space-6); flex-wrap: wrap;
+  }
+  #z3-footer-{{ section.id }} .z3-footer-tagline {
+    font-family: var(--font-display); font-weight: var(--weight-display-bold);
+    font-size: var(--text-h2); letter-spacing: var(--tracking-display); line-height: var(--leading-tight);
+  }
+  #z3-footer-{{ section.id }} .z3-footer-tagline .z3-accent { color: var(--z3-teal); }
+  #z3-footer-{{ section.id }} .z3-footer-rule {
+    height: var(--border-width); background: rgba(244, 244, 247, 0.15);
+    margin: var(--space-6) 0; border: 0;
+  }
+  #z3-footer-{{ section.id }} .z3-footer-bottom {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: var(--space-4); flex-wrap: wrap;
+    font-family: var(--font-body); font-size: var(--text-small); color: rgba(244, 244, 247, 0.6);
+  }
+{%- endstyle -%}
+
+<footer id="z3-footer-{{ section.id }}">
+  <div class="z3-footer-wrap">
+    <div class="z3-footer-top">
+      {% render 'z3-logo', variant: 'stacked', reversed: true %}
+      {%- if section.settings.tagline_lead != blank or section.settings.tagline_accent != blank -%}
+        <div class="z3-footer-tagline">
+          {{ section.settings.tagline_lead }}{% if section.settings.tagline_accent != blank %} <span class="z3-accent">{{ section.settings.tagline_accent }}</span>{% endif %}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <hr class="z3-footer-rule">
+
+    <div class="z3-footer-bottom">
+      <div>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.copyright_note }}</div>
+      {%- if section.settings.smallprint != blank -%}<div>{{ section.settings.smallprint }}</div>{%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Z3 Footer",
+  "settings": [
+    { "type": "text", "id": "tagline_lead", "label": "Tagline", "default": "Made to move" },
+    { "type": "text", "id": "tagline_accent", "label": "Tagline accent (teal)", "default": "by teens." },
+    { "type": "text", "id": "copyright_note", "label": "Copyright note", "default": "Every toy designed, printed, and packed by teens." },
+    { "type": "text", "id": "smallprint", "label": "Small print", "default": "A teen-preneur business." }
+  ],
+  "presets": [{ "name": "Z3 Footer" }]
+}
+{% endschema %}

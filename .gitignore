@@ -10,3 +10,6 @@ Thumbs.db
 .shopify
 node_modules
 *.zip
+
+# Session-local preview server config (points at a scratchpad path)
+.claude/launch.json

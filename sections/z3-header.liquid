@@ -1,0 +1,32 @@
+{%- comment -%}
+  Z3 Collective — minimal site header.
+  Box logo only for now (no nav yet — catalog still coming).
+{%- endcomment -%}
+{%- style -%}
+  #z3-header-{{ section.id }} {
+    background: var(--surface-page);
+    border-bottom: var(--border-width) solid var(--z3-ink);
+    {% if section.settings.sticky %}position: sticky; top: 0; z-index: 40;{% endif %}
+  }
+  #z3-header-{{ section.id }} .z3-header-wrap {
+    max-width: 1120px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: flex-start;
+    padding: var(--space-4) var(--space-6);
+  }
+{%- endstyle -%}
+
+<header id="z3-header-{{ section.id }}">
+  <div class="z3-header-wrap">
+    {% render 'z3-logo', variant: 'box' %}
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Z3 Header",
+  "settings": [
+    { "type": "checkbox", "id": "sticky", "label": "Stick to top on scroll", "default": true }
+  ],
+  "presets": [{ "name": "Z3 Header" }]
+}
+{% endschema %}

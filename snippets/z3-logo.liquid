@@ -1,0 +1,48 @@
+{%- comment -%}
+  Z3 Collective logo — brand-spec marks from the design system (logo-ideas).
+  Usage:
+    {% render 'z3-logo', variant: 'box' %}                        → horizontal box logo (for light headers)
+    {% render 'z3-logo', variant: 'stacked' %}                    → stacked logo (light bg)
+    {% render 'z3-logo', variant: 'stacked', reversed: true %}    → stacked logo (dark bg)
+    {% render 'z3-logo', ..., link: false %}                      → render without the home link wrapper
+  Defaults: ink tile/box, teal hard shadow, all-white "Z3", period matches text color.
+{%- endcomment -%}
+{%- liquid
+  assign variant = variant | default: 'box'
+  if link == nil
+    assign link = true
+  endif
+-%}
+
+{%- if variant == 'stacked' -%}
+  {%- liquid
+    assign tile_bg = '--z3-ink'
+    assign z3_color = '--z3-paper'
+    assign word_color = '--z3-ink'
+    if reversed
+      assign tile_bg = '--z3-paper'
+      assign z3_color = '--z3-ink'
+      assign word_color = '--z3-paper'
+    endif
+  -%}
+  {%- capture logo_markup -%}
+    <span class="z3-logo z3-logo--stacked" style="display:inline-block;text-align:center;text-decoration:none;">
+      <span style="width:58px;height:58px;border-radius:16px;background:var({{ tile_bg }});box-shadow:3px 3px 0 var(--z3-teal);display:grid;place-items:center;margin:0 auto;">
+        <span style="font-family:var(--font-display);font-weight:700;font-size:30px;letter-spacing:0.06em;color:var({{ z3_color }});-webkit-text-stroke:1.2px var({{ z3_color }});">Z3</span>
+      </span>
+      <span style="display:block;font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:-0.01em;margin-top:8px;color:var({{ word_color }});">collective<span style="color:var(--z3-teal);">.</span></span>
+    </span>
+  {%- endcapture -%}
+{%- else -%}
+  {%- capture logo_markup -%}
+    <span class="z3-logo z3-logo--box" style="display:inline-block;border-radius:16px;background:var(--z3-ink);box-shadow:3px 3px 0 var(--z3-teal);padding:12px 22px 14px;text-decoration:none;">
+      <span style="font-family:var(--font-display);font-weight:700;font-size:24px;letter-spacing:0.04em;color:var(--z3-paper);-webkit-text-stroke:0.9px var(--z3-paper);">Z3 <span style="letter-spacing:-0.01em;-webkit-text-stroke:0;">collective</span><span style="-webkit-text-stroke:0;">.</span></span>
+    </span>
+  {%- endcapture -%}
+{%- endif -%}
+
+{%- if link -%}
+  <a href="{{ routes.root_url }}" aria-label="{{ shop.name }} — home" style="text-decoration:none;display:inline-block;">{{ logo_markup }}</a>
+{%- else -%}
+  {{ logo_markup }}
+{%- endif -%}
