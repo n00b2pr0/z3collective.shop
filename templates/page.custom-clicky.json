@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "custom_clicky": {
+      "type": "z3-custom-clicky",
+      "settings": {}
+    }
+  },
+  "order": [
+    "custom_clicky"
+  ]
+}

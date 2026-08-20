@@ -1,0 +1,310 @@
+{%- comment -%}
+  Z3 Collective — Custom Clicky request form
+  A single Shopify contact form that collects either a custom-order request
+  or a popup-event request. A request-type toggle (progressive enhancement)
+  shows the relevant field group; without JS every field is visible so the
+  form still works. Submissions arrive by email to the store's notification
+  address, with each contact[Label] field shown as a readable line.
+  Styled with the Z3 Collective design system (assets/z3-tokens.css).
+{%- endcomment -%}
+
+{%- style -%}
+  #z3cc-{{ section.id }} {
+    background: var(--surface-page);
+    color: var(--text-body);
+    font-family: var(--font-body);
+    padding: var(--space-8) 0 var(--space-9);
+  }
+  #z3cc-{{ section.id }} .z3cc-wrap { max-width: 720px; margin: 0 auto; padding: 0 var(--space-6); }
+
+  /* Hero */
+  #z3cc-{{ section.id }} .z3cc-eyebrow {
+    font-size: var(--text-tiny); font-weight: var(--weight-body-semibold);
+    letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted);
+  }
+  #z3cc-{{ section.id }} h1 {
+    font-family: var(--font-display); font-weight: var(--weight-display-bold);
+    font-size: clamp(2rem, 5vw, var(--text-h1)); line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display); margin: var(--space-3) 0 0;
+  }
+  #z3cc-{{ section.id }} h1 .z3cc-accent { color: var(--z3-teal); }
+  #z3cc-{{ section.id }} .z3cc-intro {
+    font-size: 17px; line-height: var(--leading-body); color: var(--text-muted);
+    margin: var(--space-4) 0 var(--space-7);
+  }
+
+  /* Card */
+  #z3cc-{{ section.id }} .z3cc-card {
+    background: var(--surface-card); border: var(--border-width) solid var(--z3-ink);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-sticker-lg);
+    padding: var(--space-7) var(--space-6);
+  }
+
+  /* Request-type toggle */
+  #z3cc-{{ section.id }} .z3cc-toggle-label {
+    display: block; font-family: var(--font-display); font-weight: var(--weight-display-bold);
+    font-size: var(--text-small); letter-spacing: var(--tracking-caps); text-transform: uppercase;
+    margin: 0 0 var(--space-3);
+  }
+  #z3cc-{{ section.id }} .z3cc-toggle { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-6); }
+  #z3cc-{{ section.id }} .z3cc-toggle .z3cc-opt {
+    flex: 1 1 200px; position: relative; display: flex; align-items: center; gap: var(--space-3);
+    padding: var(--space-4); cursor: pointer;
+    background: var(--z3-white); border: var(--border-width) solid var(--z3-ink);
+    border-radius: var(--radius-md); box-shadow: var(--shadow-sticker);
+    transition: transform var(--duration-fast) var(--ease-snap), box-shadow var(--duration-fast) var(--ease-snap), background var(--duration-fast) linear;
+  }
+  #z3cc-{{ section.id }} .z3cc-toggle .z3cc-opt:hover { transform: translate(-1px,-1px); box-shadow: var(--shadow-sticker-lg); }
+  #z3cc-{{ section.id }} .z3cc-toggle input { position: absolute; opacity: 0; pointer-events: none; }
+  #z3cc-{{ section.id }} .z3cc-opt .z3cc-opt-title { display: block; font-family: var(--font-display); font-weight: var(--weight-display-bold); font-size: 17px; }
+  #z3cc-{{ section.id }} .z3cc-opt .z3cc-opt-desc { display: block; font-size: var(--text-small); color: var(--text-muted); margin-top: 2px; }
+  #z3cc-{{ section.id }} .z3cc-toggle input:checked + .z3cc-opt-text::before { background: var(--z3-teal); }
+  #z3cc-{{ section.id }} .z3cc-opt .z3cc-opt-text { display: flex; align-items: baseline; gap: var(--space-3); }
+  #z3cc-{{ section.id }} .z3cc-opt .z3cc-opt-text::before {
+    content: ""; flex: 0 0 auto; width: 18px; height: 18px; border-radius: var(--radius-pill);
+    border: var(--border-width) solid var(--z3-ink); background: var(--z3-white); align-self: center;
+    transition: background var(--duration-fast) linear;
+  }
+  #z3cc-{{ section.id }} .z3cc-opt:has(input:checked) { background: var(--z3-teal-soft); }
+
+  /* Fields */
+  #z3cc-{{ section.id }} .z3cc-field { margin-bottom: var(--space-5); }
+  #z3cc-{{ section.id }} .z3cc-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+  #z3cc-{{ section.id }} .z3cc-field label {
+    display: block; font-weight: var(--weight-body-semibold); font-size: var(--text-small);
+    margin-bottom: var(--space-2);
+  }
+  #z3cc-{{ section.id }} .z3cc-field .z3cc-req { color: var(--z3-dragons); }
+  #z3cc-{{ section.id }} .z3cc-field input,
+  #z3cc-{{ section.id }} .z3cc-field select,
+  #z3cc-{{ section.id }} .z3cc-field textarea {
+    width: 100%; padding: 12px 14px; font-size: var(--text-base); font-family: var(--font-body);
+    color: var(--z3-ink); background: var(--z3-white);
+    border: var(--border-width) solid var(--z3-ink); border-radius: var(--radius-md);
+  }
+  #z3cc-{{ section.id }} .z3cc-field textarea { min-height: 120px; resize: vertical; }
+  #z3cc-{{ section.id }} .z3cc-field input:focus,
+  #z3cc-{{ section.id }} .z3cc-field select:focus,
+  #z3cc-{{ section.id }} .z3cc-field textarea:focus {
+    outline: none; box-shadow: var(--shadow-sticker); transform: translate(-1px,-1px);
+  }
+
+  /* Conditional groups. Default: everything shown (no-JS fallback). */
+  #z3cc-{{ section.id }} .z3cc-group-title {
+    font-family: var(--font-display); font-weight: var(--weight-display-bold); font-size: var(--text-h3);
+    margin: var(--space-6) 0 var(--space-4); padding-top: var(--space-5);
+    border-top: var(--border-width) solid var(--z3-ink-12);
+  }
+  #z3cc-{{ section.id }}[data-mode="custom"] .z3cc-group--event,
+  #z3cc-{{ section.id }}[data-mode="event"] .z3cc-group--custom { display: none; }
+
+  /* Submit + status */
+  #z3cc-{{ section.id }} .z3cc-submit {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-weight: var(--weight-display-bold); letter-spacing: -0.01em;
+    font-size: 18px; padding: 14px 32px; min-height: 52px; margin-top: var(--space-2);
+    border-radius: var(--radius-pill); border: var(--border-width) solid var(--z3-ink);
+    background: var(--z3-teal); color: var(--z3-ink); cursor: pointer;
+    box-shadow: var(--shadow-sticker);
+    transition: transform var(--duration-fast) var(--ease-snap), box-shadow var(--duration-fast) var(--ease-snap), background var(--duration-fast) linear;
+  }
+  #z3cc-{{ section.id }} .z3cc-submit:hover { transform: translate(-1px,-1px); box-shadow: var(--shadow-sticker-lg); background: var(--z3-teal-deep); }
+  #z3cc-{{ section.id }} .z3cc-submit:active { transform: translate(2px,2px); box-shadow: none; }
+
+  #z3cc-{{ section.id }} .z3cc-status {
+    border: var(--border-width) solid var(--z3-ink); border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6);
+    font-weight: var(--weight-body-semibold);
+  }
+  #z3cc-{{ section.id }} .z3cc-status--success { background: var(--z3-teal-soft); }
+  #z3cc-{{ section.id }} .z3cc-status--error { background: #ffe6dc; }
+  #z3cc-{{ section.id }} .z3cc-status ul { margin: var(--space-2) 0 0; padding-left: var(--space-5); font-weight: var(--weight-body); }
+
+  @media (max-width: 560px) {
+    #z3cc-{{ section.id }} .z3cc-row { grid-template-columns: 1fr; }
+    #z3cc-{{ section.id }} .z3cc-card { padding: var(--space-6) var(--space-4); }
+  }
+{%- endstyle -%}
+
+<div id="z3cc-{{ section.id }}" data-mode="custom">
+  <div class="z3cc-wrap">
+
+    {%- if section.settings.eyebrow != blank -%}
+      <div class="z3cc-eyebrow">{{ section.settings.eyebrow }}</div>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h1>{{ section.settings.heading }}{% if section.settings.heading_accent != blank %} <span class="z3cc-accent">{{ section.settings.heading_accent }}</span>{% endif %}</h1>
+    {%- endif -%}
+    {%- if section.settings.intro != blank -%}
+      <p class="z3cc-intro">{{ section.settings.intro }}</p>
+    {%- endif -%}
+
+    <div class="z3cc-card">
+      {%- form 'contact', id: 'z3cc-form', class: 'z3cc-form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="z3cc-status z3cc-status--success" tabindex="-1" autofocus>
+            {{ section.settings.success_message }}
+          </p>
+        {%- elsif form.errors -%}
+          <div class="z3cc-status z3cc-status--error" role="alert" tabindex="-1" autofocus>
+            {{ 'templates.contact.form.error_heading' | t }}
+            <ul>
+              {%- for field in form.errors -%}
+                <li>{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}</li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Request type toggle {%- endcomment -%}
+        <span class="z3cc-toggle-label">What can we make for you?</span>
+        <div class="z3cc-toggle" role="radiogroup" aria-label="Request type">
+          <label class="z3cc-opt">
+            <input type="radio" name="contact[Request type]" value="Custom order" checked data-z3cc-mode="custom">
+            <span class="z3cc-opt-text">
+              <span>
+                <span class="z3cc-opt-title">Custom order</span>
+                <span class="z3cc-opt-desc">A made-to-order batch of clickers</span>
+              </span>
+            </span>
+          </label>
+          <label class="z3cc-opt">
+            <input type="radio" name="contact[Request type]" value="Popup event" data-z3cc-mode="event">
+            <span class="z3cc-opt-text">
+              <span>
+                <span class="z3cc-opt-title">Popup event</span>
+                <span class="z3cc-opt-desc">Book us for a market, fair, or party</span>
+              </span>
+            </span>
+          </label>
+        </div>
+
+        {%- comment -%} Shared contact fields {%- endcomment -%}
+        <div class="z3cc-row">
+          <div class="z3cc-field">
+            <label for="z3cc-name">Name <span class="z3cc-req" aria-hidden="true">*</span></label>
+            <input type="text" id="z3cc-name" name="contact[name]" autocomplete="name" required
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+          </div>
+          <div class="z3cc-field">
+            <label for="z3cc-email">Email <span class="z3cc-req" aria-hidden="true">*</span></label>
+            <input type="email" id="z3cc-email" name="contact[email]" autocomplete="email" spellcheck="false"
+              autocapitalize="off" aria-required="true" required
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+          </div>
+        </div>
+        <div class="z3cc-field">
+          <label for="z3cc-phone">Phone</label>
+          <input type="tel" id="z3cc-phone" name="contact[Phone]" autocomplete="tel" pattern="[0-9\-\+\s\(\)]*"
+            value="{% if customer %}{{ customer.phone }}{% endif %}">
+        </div>
+
+        {%- comment -%} Custom-order fields {%- endcomment -%}
+        <div class="z3cc-group z3cc-group--custom">
+          <div class="z3cc-group-title">Your custom order</div>
+          <div class="z3cc-row">
+            <div class="z3cc-field">
+              <label for="z3cc-line">Product line</label>
+              <select id="z3cc-line" name="contact[Product line]">
+                <option value="">No preference</option>
+                <option>Dragons</option>
+                <option>Dinos</option>
+                <option>Critters</option>
+                <option>Fidgets</option>
+                <option>Mix / not sure</option>
+              </select>
+            </div>
+            <div class="z3cc-field">
+              <label for="z3cc-qty">How many?</label>
+              <input type="text" id="z3cc-qty" name="contact[Quantity]" inputmode="numeric" placeholder="e.g. 25">
+            </div>
+          </div>
+          <div class="z3cc-field">
+            <label for="z3cc-budget">Budget (optional)</label>
+            <input type="text" id="z3cc-budget" name="contact[Budget]" placeholder="e.g. $200">
+          </div>
+          <div class="z3cc-field">
+            <label for="z3cc-custom-details">Tell us what you're picturing</label>
+            <textarea id="z3cc-custom-details" name="contact[Custom order details]"
+              placeholder="Colors, characters, an occasion, a deadline — anything that helps us make it."></textarea>
+          </div>
+        </div>
+
+        {%- comment -%} Popup-event fields {%- endcomment -%}
+        <div class="z3cc-group z3cc-group--event">
+          <div class="z3cc-group-title">Your popup event</div>
+          <div class="z3cc-row">
+            <div class="z3cc-field">
+              <label for="z3cc-event-type">Event type</label>
+              <select id="z3cc-event-type" name="contact[Event type]">
+                <option value="">Choose one</option>
+                <option>Market / fair</option>
+                <option>School event</option>
+                <option>Birthday party</option>
+                <option>Corporate / community</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="z3cc-field">
+              <label for="z3cc-event-date">Event date</label>
+              <input type="date" id="z3cc-event-date" name="contact[Event date]">
+            </div>
+          </div>
+          <div class="z3cc-row">
+            <div class="z3cc-field">
+              <label for="z3cc-event-location">Location / venue</label>
+              <input type="text" id="z3cc-event-location" name="contact[Event location]" placeholder="City, venue, or address">
+            </div>
+            <div class="z3cc-field">
+              <label for="z3cc-event-attendance">Expected attendance</label>
+              <input type="text" id="z3cc-event-attendance" name="contact[Expected attendance]" inputmode="numeric" placeholder="e.g. 150">
+            </div>
+          </div>
+          <div class="z3cc-field">
+            <label for="z3cc-event-details">Tell us about your event</label>
+            <textarea id="z3cc-event-details" name="contact[Event details]"
+              placeholder="What's the occasion, what are you hoping we bring, and any timing details."></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="z3cc-submit">{{ section.settings.button_label }}</button>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('z3cc-{{ section.id }}');
+    if (!root) return;
+    var radios = root.querySelectorAll('input[data-z3cc-mode]');
+    function sync() {
+      radios.forEach(function (r) {
+        if (r.checked) root.setAttribute('data-mode', r.getAttribute('data-z3cc-mode'));
+      });
+    }
+    radios.forEach(function (r) { r.addEventListener('change', sync); });
+    sync();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Z3 Custom Clicky",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Custom Clicky" },
+    { "type": "text", "id": "heading", "label": "Headline", "default": "Order something custom, or" },
+    { "type": "text", "id": "heading_accent", "label": "Headline accent word (teal)", "default": "book us for a popup." },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Tell us what you have in mind and we'll get back to you fast. Pick a request type below and fill in the details." },
+
+    { "type": "header", "content": "Form" },
+    { "type": "text", "id": "button_label", "label": "Submit button label", "default": "Send request" },
+    { "type": "textarea", "id": "success_message", "label": "Success message", "default": "Thanks! Your request is in — we'll be in touch soon. 🎉" }
+  ],
+  "presets": [
+    { "name": "Z3 Custom Clicky" }
+  ]
+}
+{% endschema %}
